@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="column">
+<!--    {% for followed in user.all %}-->
+<!--        {% for student in students.all %}-->
+<!--            <div class="box">-->
+<!--                {{student}}-->
+<!--                <span class="is-small has-text-grey-light">-->
+<!--                    ({{ student }} by {{ student }}-->
+<!--                </span>-->
+<!--            </div>-->
+<!--&lt;!&ndash;        {% endfor %}&ndash;&gt;-->
+<!--    {% endfor %}-->
+</div>
+
+<div class="column is-one-third">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button is-success is-fullwidth is-medium mt-5"
+                type="submit">Dweet
+        </button>
+    </form>
+</div>
+
+{% endblock content %}
