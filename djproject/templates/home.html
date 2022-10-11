@@ -4,10 +4,9 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.get_full_name,
-      user.teachers.surname,
-      user.teachers.group_id }}!
+  Hi {{ user.username }}!
   <p><a href="{% url 'logout' %}">Log Out</a></p>
+  <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>

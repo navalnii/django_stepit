@@ -34,16 +34,5 @@ class Teachers(models.Model):
     group_id = models.ForeignKey(Group, on_delete=models.CASCADE)
 
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Teachers.objects.create(user=instance)
-
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.teachers.save()
-
-
 class Scores(models.Model):
     students_group_id = models.ForeignKey(StudentsGroup, on_delete=models.CASCADE)

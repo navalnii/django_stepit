@@ -14,4 +14,4 @@ class TeachersForm(forms.ModelForm):
     class Meta:
         model = Teachers
         fields = ('name', 'surname', 'group_id')
-        # exclude = ("user",)
+

@@ -1,17 +1,16 @@
 from django.contrib import admin
 from django.urls import path, include
 from .views import (
-    get_all_student,
-    get_student_by_id,
+    Student,
     create_student,
     base,
-    enter
+    StudentsListView
 )
 
 
 urlpatterns = [
     path('', base),
-    path('students/', get_all_student),
-    path('student/<int:id>', get_student_by_id),
-    path('student/create/', create_student)
+    path('students/', StudentsListView.as_view()),
+    path('student/<int:pk>', Student.as_view()),
+    path('student/create/', create_student),
 ]
