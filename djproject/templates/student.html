@@ -1,0 +1,29 @@
+{% load render_table from django_tables2 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student list</title>
+</head>
+<body>
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<h1>Student detail</h1>
+<p>Name: {{ object.name }}</p>
+<p>Surname: {{ object.surname }}</p>
+<p>Age: {{ object.age }}</p>
+<p>Group: {{ object.group_id }}</p>
+
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">Log In</a>
+
+{% endif %}
+{% endblock %}
+
+</body>
+</html>
+

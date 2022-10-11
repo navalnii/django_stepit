@@ -8,7 +8,7 @@ from django.http import Http404, HttpResponseRedirect
 from django.views.generic import ListView, DetailView
 
 from .models import Students, Group
-from .forms import TeachersForm, UserForm
+from .forms import StudentsForm
 
 
 class StudentsListView(ListView):
@@ -18,22 +18,18 @@ class StudentsListView(ListView):
 
 class Student(DetailView):
     model = Students
-    template_name = 'students.html'
+    template_name = 'student.html'
     queryset = Students.objects
-
-    def post(self, request):
-
-        return HttpResponse('')
 
 
 def create_student(request):
     if request.method == "POST":
-        form = StudentForm(request.POST)
+        form = StudentsForm(request.POST)
         if form.is_valid():
             student = form.save(commit=False)
             student.user = request.user
             student.save()
-    form = StudentForm()
+    form = StudentsForm()
     return render(request, 'dashboard.html', {'form': form})
 
 
